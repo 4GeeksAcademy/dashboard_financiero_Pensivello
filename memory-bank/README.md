@@ -8,6 +8,7 @@ Documentación de contexto para contribuidores y agentes. Los datos de producto 
 - [`tech-stack.md`](tech-stack.md) — lenguajes, frameworks, infraestructura y dependencias verificadas.
 - [`current-state.md`](current-state.md) — capacidades visibles, gaps observables y tareas de validación pendientes sin prioridades de producto inventadas.
 - [`../specs/business-comparison.md`](../specs/business-comparison.md) — contrato/resoluciones de la especificación de comparación B2B/B2C frente a los campos reales de la API.
+- [`../frontend/specs/components.md`](../frontend/specs/components.md) — responsabilidades y props actuales de los componentes React por funcionalidad.
 
 ## Criterio de evidencia
 
