@@ -33,16 +33,42 @@ Registro breve de comprobaciones basadas en los archivos del repositorio y de co
 
 ## Historial de commits ejecutados
 
-Añadir una entrada después de ejecutar cada commit. Este registro refleja el historial local observado el **2026-10-20**; no incluye commits futuros.
+Historial local observado el **2026-10-20** con `git log --format='%h %s' --all`, ordenado del más reciente al más antiguo. Incluye los commits visibles en las referencias locales en ese momento; no anticipa commits posteriores.
 
-- `56c6e52` — `verificacion de proyecto` — commit local actual observado al iniciar esta actualización.
-- `954f812` — Merge pull request #1 from `deimianvasquez/main`.
+- `0820536` — `creando un memory bank` (HEAD al revisar).
+- `c3009ed` — `implementando reglas del repositorio`.
+- `b7128d0` — `notas de analisis y propuesta de reglas`.
+- `1b3a0b2` — `comprendiendo el handover y verificacion`.
+- `56c6e52` — `verificacion de proyecto`.
+- `954f812` — `Merge pull request #1 from deimianvasquez/main`.
 - `eeece05` — `feat: use Vite API proxy and document frontend env setup`.
 - `f0812fa` — `Update Spanish README with corrected link for project initiation instructions.`
 - `291f2db` — `.agents folder structure in Readme`.
 - `4510e15` — `Enhance documentation for agents and project structure.`
+- `cfd18e4` — `Update repo slug`.
+- `87e1942` — `Refactor list comprehensions for clarity in movement filtering.`
+- `0c07552` — `Add anomaly alerts endpoint based on outcome spikes.`
+- `5df15b4` — `Add period-over-period comparison endpoint for net movement.`
+- `be510b5` — `Add top categories endpoint for ranked financial drivers.`
+- `2b5c237` — `Add period summary endpoint for financial aggregates.`
+- `959bc84` — `Add metrics facets endpoint for discoverable filters.`
+- `c061621` — `Add operation and category filters to metrics endpoints.`
+- `cbd20dc` — `Adapt readmes`.
+- `c5dc883` — `Remove extra content in Readme`.
+- `04e8d8a` — `AGENTS.md with default guidelines for rules and context.`
+- `fb7dd96` — `docs: clarify project objectives and setup steps`.
+- `a8d30bf` — `Fix config issues`.
+- `9c3e480` — `chore: Ensure dates are generated in the correct order`.
+- `e267908` — `Fix: Graphs showing months in right order`.
+- `29ebca4` — `Frontend tests`.
+- `df43669` — `Backend tests`.
+- `91978e0` — `Move endpoints to routes.py`.
+- `15ce4c2` — `Initial backend`.
+- `7661fa1` — `Frontend from V0 with components and types`.
+- `cc691b6` — `.gitignore`.
+- `bb0a9c1` — `Initial config`.
 
-> Este archivo se modifica en el commit actual de documentación. Añadir su hash y mensaje a la lista después de que ese commit se haya ejecutado; no inventar ni anticipar hashes.
+> Este cambio actualiza el registro de commits en `verification.md`; su propio commit se añadirá cuando efectivamente se cree, sin anticipar su hash.
 
 ## Notas de PR
 
