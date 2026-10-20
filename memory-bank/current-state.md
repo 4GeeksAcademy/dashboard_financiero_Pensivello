@@ -5,7 +5,8 @@ Estado redactado tras revisar el código y configuración del repositorio el **2
 ## Qué está implementado en código
 
 - ✅ El frontend monta el dashboard React desde `frontend/src/main.tsx` y `frontend/src/App.tsx`.
-- ✅ El dashboard solicita movimientos desde `/api/metrics`, maneja estados de carga/error, calcula KPIs y series mensuales, y muestra tarjetas y gráficos (`frontend/src/App.tsx`, `frontend/src/lib/financial-utils.ts`, `frontend/src/components/dashboard/`).
+- ✅ El dashboard solicita movimientos desde `/api/metrics`, obtiene los límites de fechas desde `/api/metrics/facets` y alertas desde `/api/metrics/alerts`; permite filtrar por fechas y configurar umbral de anomalías, calcula KPIs/series y muestra estados de carga, error y vacío (`frontend/src/App.tsx`, `frontend/src/components/dashboard/alerts-table.tsx`).
+- ✅ La navegación local de `App.tsx` presenta Resumen y Comparativa B2B vs B2C. La comparativa usa top cinco categorías de ingreso y summary mensual segmentados por grupo, comparte las fechas y muestra tablas paralelas más un gráfico de ingresos totales (`frontend/src/App.tsx`, `frontend/src/components/dashboard/business-comparison-page.tsx`).
 - ✅ FastAPI define `/health` y rutas `/api/metrics` para movimientos, facets, resumen, categorías principales, comparación, alertas y segmentos B2B/B2C (`backend/app/main.py`, `backend/app/routes.py`).
 - ✅ El backend genera 360 movimientos mock con semilla `42`; una prueba comprueba cantidad y orden cronológico (`backend/app/routes.py`, `backend/tests/test_routes.py`).
 - ✅ Hay pruebas de utilidades financieras frontend y pruebas de rutas backend (`frontend/src/lib/financial-utils.test.ts`, `backend/tests/test_routes.py`).
@@ -15,7 +16,7 @@ Estado redactado tras revisar el código y configuración del repositorio el **2
 
 Estos puntos describen diferencias o límites del código revisado; no se presentan como compromisos de roadmap.
 
-- ✅ `frontend/src/App.tsx` solo consulta `/api/metrics`; los demás endpoints declarados en backend no aparecen consumidos desde ese componente.
+- ✅ `frontend/src/App.tsx` consulta `/api/metrics`, `/api/metrics/facets` y `/api/metrics/alerts`; la página comparativa consume además `/api/metrics/categories/top` y `/api/metrics/summary` (`frontend/src/components/dashboard/business-comparison-page.tsx`).
 - ✅ La API soporta más filtros y análisis de los que aparecen en el dashboard actual (como resumen, comparación, alertas y B2B/B2C), según las rutas en `backend/app/routes.py` frente a `frontend/src/App.tsx`.
 - ✅ Los datos proceden de un generador mock y no hay servicio ni configuración de persistencia en `docker-compose.yml` (`backend/app/routes.py`, `docker-compose.yml`).
 - ✅ El periodo del encabezado es fijo (`2024 - Full Year`) mientras la generación de datos depende de `date.today()` (`frontend/src/App.tsx`, `backend/app/routes.py`).

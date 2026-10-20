@@ -3,7 +3,12 @@ from datetime import date
 from fastapi.testclient import TestClient
 
 from app.main import app
-from app.routes import filter_movements_by_date, generate_mock_movements
+from app.routes import (
+    MetricsSummaryItem,
+    detect_outcome_alerts,
+    filter_movements_by_date,
+    generate_mock_movements,
+)
 
 
 client = TestClient(app)
@@ -187,3 +192,66 @@ def test_metrics_alerts_returns_anomaly_candidates():
             "baseline_average",
             "increase_ratio",
         }
+
+
+def test_outcome_alerts_use_only_three_previous_periods():
+    summary = [
+        MetricsSummaryItem(period=f"2025-{month:02d}", income=0, outcome=value, net=-value)
+        for month, value in enumerate([10, 20, 30, 60, 40], start=1)
+    ]
+
+    alerts = detect_outcome_alerts(summary, threshold=0.3)
+
+    assert len(alerts) == 1
+    assert alerts[0].period == "2025-04"
+    assert alerts[0].baseline_average == 20
+    assert alerts[0].increase_ratio == 2
+
+
+def test_metrics_alerts_validate_threshold_range():
+    assert client.get("/api/metrics/alerts", params={"threshold": 0.009}).status_code == 422
+    assert client.get("/api/metrics/alerts", params={"threshold": 1.01}).status_code == 422
+
+
+def test_metrics_alerts_respect_selected_date_range():
+    movements = generate_mock_movements(seed=42)
+    months = sorted({movement.create_date.strftime("%Y-%m") for movement in movements})
+    selected_month = months[4]
+    selected_movement = next(
+        movement
+        for movement in movements
+        if movement.create_date.strftime("%Y-%m") == selected_month
+    )
+    selected_date = selected_movement.create_date.isoformat()
+
+    response = client.get(
+        "/api/metrics/alerts",
+        params={
+            "threshold": 0.01,
+            "start_date": selected_date,
+            "end_date": selected_date,
+        },
+    )
+
+    assert response.status_code == 200
+    assert all(item["period"] == selected_month for item in response.json())
+
+
+def test_alert_date_range_includes_overlapping_periods():
+    full_summary = [
+        MetricsSummaryItem(period=f"2025-{month:02d}", income=0, outcome=value, net=-value)
+        for month, value in enumerate([10, 20, 30, 60], start=1)
+    ]
+
+    # The selected range supplies the month's partial/current total, while the
+    # full history keeps the three preceding periods available as the baseline.
+    filtered_summary = [
+        MetricsSummaryItem(period="2025-04", income=0, outcome=45, net=-45)
+    ]
+    alerts = detect_outcome_alerts(filtered_summary, 0.3, full_summary)
+
+    assert len(alerts) == 1
+    assert alerts[0].period == "2025-04"
+    assert alerts[0].outcome_total == 45
+    assert alerts[0].baseline_average == 20
+    assert alerts[0].increase_ratio == 1.25

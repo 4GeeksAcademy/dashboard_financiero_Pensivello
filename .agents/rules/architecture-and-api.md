@@ -9,7 +9,7 @@ Cambios en endpoints, parámetros, modelos/respuestas, tipos financieros y flujo
 ## Justificación
 - `backend/app/routes.py` define los modelos Pydantic, los valores admitidos y las rutas de la API.
 - `frontend/src/lib/financial-types.ts` vuelve a declarar los tipos usados por la interfaz.
-- `frontend/src/App.tsx` consume `/api/metrics`, calcula KPIs y datos mensuales, y compone el dashboard.
+- `frontend/src/App.tsx` consume `/api/metrics`, `/api/metrics/facets` y `/api/metrics/alerts`, permite filtrar por fecha, calcula KPIs y datos mensuales, y compone el dashboard.
 - `docker-compose.yml` llama `backend` al servicio de API; `frontend/vite.config.ts` proxyea `/api` a `http://backend:8000`.
 
 ## Guía específica

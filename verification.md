@@ -7,12 +7,18 @@ Registro breve de comprobaciones basadas en los archivos del repositorio y de co
 - ✅ **Verificada en código:** El proyecto es un dashboard de métricas financieras. El frontend presenta indicadores de ingresos, egresos, beneficio y margen de beneficio, además de gráficos mensuales de ingresos/egresos y margen (`frontend/src/App.tsx`, `frontend/src/components/dashboard/`, `frontend/src/lib/financial-utils.ts`).
 - ✅ **Verificada en código:** El backend genera movimientos financieros de ejemplo de forma determinista con `seed=42`; no se encontró una base de datos configurada en los servicios Compose (`backend/app/routes.py`, `docker-compose.yml`).
 - ✅ **Verificada en código:** La API declara endpoints para estado, movimientos, facets/opciones de filtros, resumen, categorías principales, comparación, alertas y movimientos B2B/B2C (`backend/app/routes.py`).
-- ✅ **Verificada en código:** El dashboard actualmente solicita `GET /api/metrics` y realiza los cálculos de KPIs y series mensuales en el frontend. No se observa que `App.tsx` consuma los demás endpoints (`frontend/src/App.tsx`).
+- ✅ **Verificada en código:** El dashboard solicita `GET /api/metrics`, calcula KPIs y series mensuales en el frontend y permite filtrar opcionalmente por fechas `start_date` y `end_date` (`frontend/src/App.tsx`, `frontend/src/lib/financial-utils.ts`).
+- ✅ **Verificada en código:** El dashboard consulta `/api/metrics/facets` y muestra las fechas mínima y máxima disponibles junto a los inputs de fecha (`frontend/src/App.tsx`, `frontend/src/lib/financial-types.ts`).
+- ✅ **Verificada en código:** Bajo los gráficos, el dashboard solicita `/api/metrics/alerts` con umbral configurable y el rango de fechas seleccionado; muestra outcome, media de los tres períodos anteriores, incremento y estado vacío explícito (`frontend/src/App.tsx`, `frontend/src/components/dashboard/alerts-table.tsx`, `backend/app/routes.py`).
+- ✅ **Verificada en código:** Las alertas usan una media móvil de los tres períodos inmediatamente anteriores, y el endpoint restringe el umbral a `0.01`–`1.0` (`backend/app/routes.py`).
+- ✅ **Verificada en código:** La navegación del dashboard incluye una página de comparativa B2B/B2C. La página solicita las cinco categorías de ingreso por grupo y el resumen mensual de ingresos de cada grupo, aplica el rango seleccionado y presenta dos tablas y un gráfico comparativo (`frontend/src/App.tsx`, `frontend/src/components/dashboard/business-comparison-page.tsx`, `backend/app/routes.py`).
+- ✅ **Verificada en código:** La página comparativa contrasta las categorías recibidas con las categorías expuestas en facets y calcula el porcentaje sobre los ingresos totales del grupo, no sobre el subtotal de las cinco categorías (`frontend/src/components/dashboard/business-comparison-page.tsx`, `frontend/src/lib/business-comparison.ts`).
 
 ## Conexión entre componentes
 
 - ✅ **Verificada en código:** En la carga de la aplicación, `frontend/index.html` carga `src/main.tsx`, que monta el componente `App` (`frontend/index.html`, `frontend/src/main.tsx`).
-- ✅ **Verificada en código:** `App.tsx` hace `fetch` a `/api/metrics`; convierte el resultado a KPIs y datos mensuales y los pasa a componentes del dashboard (`frontend/src/App.tsx`).
+- ✅ **Verificada en código:** `App.tsx` consulta `/api/metrics/facets` para cargar el rango disponible, `/api/metrics` para obtener movimientos y `/api/metrics/alerts` para alertas; las dos últimas peticiones reciben las fechas seleccionadas cuando existen (`frontend/src/App.tsx`, `frontend/src/lib/date-range.ts`).
+- ✅ **Verificada en código:** La página de comparación solicita `/api/metrics/categories/top` y `/api/metrics/summary` para cada grupo B2B/B2C; ambas peticiones llevan fechas opcionales, y categorías se constriñen con las facets disponibles (`frontend/src/components/dashboard/business-comparison-page.tsx`, `frontend/src/lib/date-range.ts`).
 - ✅ **Verificada en configuración:** El proxy de Vite reenvía `/api` a `http://backend:8000`, y Compose nombra al servicio API `backend` (`frontend/vite.config.ts`, `docker-compose.yml`).
 - ✅ **Verificada en código:** El backend arranca la aplicación FastAPI en `app.main:app`; `main.py` incluye el router implementado en `app/routes.py` (`backend/Dockerfile`, `backend/app/main.py`).
 - ❌ **Incorrecta:** Afirmar que los datos provienen de una base de datos; el backend inspeccionado genera datos de muestra y Compose no define servicio de base de datos.
@@ -29,7 +35,7 @@ Registro breve de comprobaciones basadas en los archivos del repositorio y de co
 - ✅ **Verificado en Compose y documentación:** Frontend en `http://localhost:5173`; backend en `http://localhost:8000`; documentación interactiva FastAPI en `http://localhost:8000/docs`.
 - ✅ **Verificado en Dockerfiles:** El contenedor frontend inicia Vite; el backend inicia Uvicorn con recarga y `debugpy` escuchando en el puerto `5678`.
 - ✅ **Verificado en README y configuración:** El proxy `/api` sirve como conexión predeterminada en desarrollo; `VITE_API_BASE_URL` permite proporcionar una base alternativa. No se comprobó una configuración de producción.
-- ❓ **Sin verificar:** No se ejecutaron pruebas, lint ni build al actualizar este archivo; por tanto, no se afirma que pasen.
+- ❓ **Sin verificar:** Para el filtro de fechas, las alertas y la página comparativa se ejecutaron desde `frontend/` `npm test`, `npm run lint` y `npm run build`, pero no pudieron ejecutarse porque las dependencias Node no están instaladas (`vitest`, `eslint` y `tsc` no encontrados). `python -m compileall -q app tests` desde `backend/` y `git diff --check` finalizaron sin errores. `pytest` no pudo recolectar pruebas porque falta `fastapi` en el entorno. No se afirma que las suites pasen.
 
 ## Historial de commits ejecutados
 
