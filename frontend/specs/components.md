@@ -31,7 +31,7 @@ El encabezado no recibe las fechas por separado ni administra el filtro.
 
 El control de fechas es JSX de `App.tsx`, no un componente reutilizable con props tipadas. Estado local: `startDate: string` y `endDate: string`, vacíos cuando el extremo no está fijado. Los inputs usan las fechas de facets como límites disponibles; los valores se envían a las consultas consumidoras en la forma de fecha `YYYY-MM-DD` que produce `<input type="date">`.
 
-No documentar `DateRangerFilter` como props de componente: es un contrato de parámetros query en `specs/param-types.ts` (conserva ese identificador tal cual está escrito allí).
+No documentar `DateRangeFilter` como props de componente: es un contrato de parámetros query en `specs/param-types.ts`, no una interfaz de props de React.
 
 ## Funcionalidad: indicadores y gráficos del resumen
 

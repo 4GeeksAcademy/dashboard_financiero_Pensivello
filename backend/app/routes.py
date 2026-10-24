@@ -226,9 +226,9 @@ def detect_outcome_alerts(
     history_by_period = {item.period: index for index, item in enumerate(history)}
     for item in summary:
         period_index = history_by_period.get(item.period)
-        if period_index is not None and period_index >= 3:
+        if period_index is not None and period_index > 0:
             previous_periods = [
-                previous.outcome for previous in history[period_index - 3:period_index]
+                previous.outcome for previous in history[:period_index]
             ]
             baseline = sum(previous_periods) / len(previous_periods)
             if baseline > 0:

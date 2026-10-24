@@ -194,7 +194,7 @@ def test_metrics_alerts_returns_anomaly_candidates():
         }
 
 
-def test_outcome_alerts_use_only_three_previous_periods():
+def test_outcome_alerts_use_all_previous_periods():
     summary = [
         MetricsSummaryItem(period=f"2025-{month:02d}", income=0, outcome=value, net=-value)
         for month, value in enumerate([10, 20, 30, 60, 40], start=1)
@@ -202,10 +202,14 @@ def test_outcome_alerts_use_only_three_previous_periods():
 
     alerts = detect_outcome_alerts(summary, threshold=0.3)
 
-    assert len(alerts) == 1
-    assert alerts[0].period == "2025-04"
-    assert alerts[0].baseline_average == 20
-    assert alerts[0].increase_ratio == 2
+    assert [alert.period for alert in alerts] == [
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+    ]
+    assert [alert.baseline_average for alert in alerts] == [10, 15, 20, 30]
+    assert [alert.increase_ratio for alert in alerts] == [1, 1, 2, 0.3333]
 
 
 def test_metrics_alerts_validate_threshold_range():
@@ -244,7 +248,7 @@ def test_alert_date_range_includes_overlapping_periods():
     ]
 
     # The selected range supplies the month's partial/current total, while the
-    # full history keeps the three preceding periods available as the baseline.
+    # Full history keeps all preceding periods available for the baseline.
     filtered_summary = [
         MetricsSummaryItem(period="2025-04", income=0, outcome=45, net=-45)
     ]

@@ -6,6 +6,7 @@
 
 export type OperationType = "income" | "outcome";
 export type BusinessType = "B2B" | "B2C";
+export type GroupBy = "day" | "week" | "month";
 export type Category =
   | "suppliers"
   | "sales"
@@ -32,6 +33,17 @@ export interface AlertEntry {
 
 /** GET /api/metrics/alerts response; FastAPI returns an array, not an envelope. */
 export type AlertsResponse = AlertEntry[];
+
+/** One period returned by GET /api/metrics/summary. */
+export interface SummaryEntry {
+  period: string;
+  income: number;
+  outcome: number;
+  net: number;
+}
+
+/** GET /api/metrics/summary response; FastAPI returns an array, not an envelope. */
+export type SummaryResponse = SummaryEntry[];
 
 /** One category row returned by GET /api/metrics/categories/top. */
 export interface CategoryEntry {

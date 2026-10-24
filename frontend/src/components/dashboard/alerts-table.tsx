@@ -35,7 +35,7 @@ export function AlertsTable({
         <div className="grid gap-2">
           <CardTitle className="text-base font-semibold">Alertas de anomalías</CardTitle>
           <CardDescription>
-            Períodos con gasto superior a la media de los tres períodos anteriores
+            Períodos con gasto superior a la media de todos los períodos anteriores
           </CardDescription>
         </div>
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
@@ -74,7 +74,7 @@ export function AlertsTable({
               <tr>
                 <th scope="col" className="px-3 py-3">Período</th>
                 <th scope="col" className="px-3 py-3 text-right">Outcome registrado</th>
-                <th scope="col" className="px-3 py-3 text-right">Media de 3 períodos anteriores</th>
+                <th scope="col" className="px-3 py-3 text-right">Media de períodos anteriores</th>
                 <th scope="col" className="px-3 py-3 text-right">Incremento</th>
               </tr>
             </thead>

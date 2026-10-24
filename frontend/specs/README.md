@@ -11,7 +11,7 @@ Esta guía describe las tres funcionalidades visibles, las rutas efectivamente c
 - `start_date` y `end_date` son opcionales e independientes. Sin uno de ellos, no existe límite por ese extremo.
 - El backend devuelve listas directamente para movimientos, alertas, categorías top y summary; no hay un objeto envelope.
 - Para valores literales, se aplican los dominios declarados en `api-types.ts`: `OperationType = "income" | "outcome"`, `BusinessType = "B2B" | "B2C"`; `Category = "suppliers" | "sales" | "operational" | "administrative" | "others"`.
-- Los contratos de parámetros reutilizables están en `param-types.ts`. El nombre `DateRangerFilter` (con “Ranger”) se conserva porque así está definido en el archivo.
+- Los contratos de parámetros reutilizables están en `param-types.ts`, incluido `DateRangeFilter`.
 
 ## 1. Dashboard de resumen: filtro de fechas, KPIs y gráficos
 
@@ -32,7 +32,7 @@ Esta guía describe las tres funcionalidades visibles, las rutas efectivamente c
 
 ```ts
 // param-types.ts
-export interface DateRangerFilter {
+export interface DateRangeFilter {
   start_date?: ApiDateString;
   end_date?: ApiDateString;
 }
@@ -84,7 +84,7 @@ No hay restricción backend que exija ambos extremos, ni una validación explíc
 
 ### Qué hace
 
-El dashboard solicita alertas al cambiar threshold o rango. La API compara el outcome del período con la media de los tres períodos inmediatamente anteriores. El rango seleccionado filtra los períodos candidatos, pero el backend conserva la historia completa para formar la media móvil. La UI presenta período, outcome, baseline e incremento, junto con un control de umbral.
+El dashboard solicita alertas al cambiar threshold o rango. Para cada período candidato, la API compara el outcome con la media de **todos los períodos anteriores disponibles en el historial completo**, no solo los tres inmediatamente anteriores. El rango seleccionado filtra los períodos candidatos, pero el backend conserva la historia completa para calcular el baseline. La UI presenta período, outcome, baseline e incremento, junto con un control de umbral.
 
 ### Endpoint consumido
 
@@ -96,8 +96,10 @@ El dashboard solicita alertas al cambiar threshold o rango. La API compara el ou
 
 ```ts
 // param-types.ts
-export interface AlertsParams extends DateRangerFilter {
+export interface AlertsParams extends DateRangeFilter {
   threshold?: number;
+  group_by?: "day" | "week" | "month";
+  business_type?: BusinessType;
 }
 
 // api-types.ts
@@ -120,13 +122,13 @@ export type AlertsResponse = AlertEntry[];
 | `group_by` | `"day" \| "week" \| "month"` opcional en API | API default `"month"`; el frontend no lo incluye y por tanto usa mensual. |
 | `business_type` | `BusinessType` opcional en API | `"B2B"` o `"B2C"`; el frontend no lo incluye y por tanto agrega ambos grupos. |
 
-El backend solo añade alerta si la media baseline es positiva y el incremento relativo es **estrictamente mayor** que `threshold`. No hay alerta antes de que existan tres períodos precedentes en la historia.
+El backend solo añade alerta si hay períodos precedentes, la media baseline es positiva y el incremento relativo es **estrictamente mayor** que `threshold`. El baseline incluye todo el historial anterior al período candidato.
 
 ### Casos límite y presentación esperada
 
-1. **Menos de cuatro períodos históricos o baseline igual a cero:** la API devuelve `[]` para esos períodos; mostrar “No se detectaron anomalías para el umbral y rango seleccionados.” No crear una baseline artificial ni una alerta.
+1. **Sin períodos históricos previos o baseline igual a cero:** la API no genera alerta para esos períodos; mostrar “No se detectaron anomalías para el umbral y rango seleccionados.” No crear una baseline artificial ni una alerta.
 2. **Incremento exactamente igual al umbral:** al ser la comparación estricta (`increase_ratio > threshold`), no aparece fila; la UI muestra el estado vacío si no hay otras alertas.
-3. **Rango seleccionado contiene un período con alerta, pero los tres anteriores caen fuera del rango:** la API conserva el historial necesario para calcular baseline y puede devolver la alerta del período filtrado. La tabla muestra el outcome del período seleccionado y la media de los tres períodos históricos.
+3. **Rango seleccionado contiene un período con alerta, pero los períodos anteriores caen fuera del rango:** la API conserva el historial completo necesario para calcular baseline y puede devolver la alerta del período filtrado. La tabla muestra el outcome del período seleccionado y la media de todos los períodos históricos anteriores.
 4. **Umbral fuera del rango o respuesta fallida:** API rechaza `threshold < 0.01` o `> 1.0` (HTTP 422); el control UI restringe/normaliza el valor y no debería emitir un valor inválido al callback. Si falla la petición, mostrar el error de alertas en la tabla; error prevalece sobre carga y filas.
 
 ## 3. Comparación B2B vs B2C
@@ -150,14 +152,14 @@ La página usa además `availableCategories` que recibe de los facets ya obtenid
 
 ```ts
 // param-types.ts
-export interface TopCategoriesParams extends DateRangerFilter {
+export interface TopCategoriesParams extends DateRangeFilter {
   operation_type?: OperationType;
   limit?: number;
   business_type?: BusinessType;
 }
 
-// Shape del query de summary empleado por la comparativa (no exportado actualmente)
-export interface BusinessSummaryParams extends DateRangerFilter {
+// param-types.ts
+export interface SummaryParams extends DateRangeFilter {
   group_by?: "day" | "week" | "month";
   operation_type?: OperationType;
   business_type?: BusinessType;
@@ -171,7 +173,7 @@ export interface CategoryEntry {
 }
 export type TopCategoriesResponse = CategoryEntry[];
 
-// Shape de cada elemento de GET /api/metrics/summary
+// api-types.ts
 export interface SummaryEntry {
   period: string;
   income: number;
@@ -181,7 +183,7 @@ export interface SummaryEntry {
 export type SummaryResponse = SummaryEntry[];
 ```
 
-`BusinessSummaryParams`, `SummaryEntry` y `SummaryResponse` especifican la petición/respuesta real pero no están exportados hoy en `param-types.ts`/`api-types.ts`. La implementación usa el tipo local `MetricsSummaryItem` en `business-comparison-page.tsx` y `TopCategoryItem` de `src/lib/financial-types.ts`.
+`SummaryParams`, `SummaryEntry` y `SummaryResponse` están exportados en `param-types.ts`/`api-types.ts` como contratos de la API. La implementación usa el tipo local `MetricsSummaryItem` en `business-comparison-page.tsx` y `TopCategoryItem` de `src/lib/financial-types.ts`.
 
 ### Parámetros y restricciones
 
@@ -203,6 +205,6 @@ export type SummaryResponse = SummaryEntry[];
 
 ## Contratos relacionados
 
-- [`api-types.ts`](./api-types.ts): tipos de respuesta definidos actualmente para facets, alertas y top categorías.
-- [`param-types.ts`](./param-types.ts): tipos de query definidos actualmente para fechas, alertas y top categorías.
+- [`api-types.ts`](./api-types.ts): tipos de respuesta definidos actualmente para facets, alertas, summary y top categorías.
+- [`param-types.ts`](./param-types.ts): tipos de query definidos actualmente para fechas, alertas, summary y top categorías.
 - [`components.md`](./components.md): props de los componentes de presentación y responsabilidades de UI.
