@@ -72,6 +72,10 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    document.title = `${activePage === "overview" ? "Resumen" : "Comparativa B2B vs B2C"} | Panel financiero`;
+  }, [activePage]);
+
+  useEffect(() => {
     const controller = new AbortController();
     fetchMetricsFacets(controller.signal)
       .then(setFacets)
@@ -136,7 +140,7 @@ function App() {
 
   const period = startDate || endDate
     ? `${startDate || "…"} – ${endDate || "…"}`
-    : "All available dates";
+    : "Todas las fechas disponibles";
 
   return (
     <main className="dark min-h-screen bg-background text-foreground">
@@ -144,7 +148,7 @@ function App() {
         <div className="flex flex-col gap-8">
           <DashboardHeader period={period} />
 
-          <nav aria-label="Dashboard pages" className="flex gap-2 border-b border-border">
+          <nav aria-label="Vistas del panel" className="flex gap-2 border-b border-border">
             <button
               type="button"
               aria-current={activePage === "overview" ? "page" : undefined}
@@ -164,7 +168,7 @@ function App() {
           </nav>
 
           <section
-            aria-label="Date range filter"
+            aria-label="Filtro de fechas"
             className="flex flex-col gap-3 rounded-lg border border-border/60 bg-card p-4 sm:flex-row sm:items-end sm:justify-between"
           >
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
@@ -199,26 +203,35 @@ function App() {
           </section>
 
           {error ? (
-            <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive-foreground">
+            <div role="alert" className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive-foreground">
               {error}
             </div>
           ) : null}
 
+          <p role="status" className="sr-only">
+            {loading
+              ? "Cargando datos financieros."
+              : error
+                ? ""
+                : "Datos financieros actualizados para el rango seleccionado."}
+          </p>
+
           {activePage === "overview" ? (
             <>
-              <section aria-label="Key performance indicators">
+              <section aria-label="Indicadores financieros" aria-busy={loading}>
                 <KPIRow metrics={metrics} loading={loading} />
               </section>
 
               <section
-                aria-label="Financial charts"
+                aria-label="Gráficos financieros"
+                aria-busy={loading}
                 className="grid grid-cols-1 gap-4 xl:grid-cols-2"
               >
                 <IncomeOutcomeChart data={monthlyData} loading={loading} />
                 <ProfitPercentChart data={monthlyData} loading={loading} />
               </section>
 
-              <section aria-label="Anomaly alerts">
+              <section aria-label="Alertas de anomalías">
                 <AlertsTable
                   alerts={alerts}
                   threshold={alertThreshold}

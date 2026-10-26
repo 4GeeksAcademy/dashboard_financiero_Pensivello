@@ -89,13 +89,13 @@ describe("computeMonthlyData", () => {
 
     expect(monthlyData).toHaveLength(2);
     expect(monthlyData[0]).toEqual({
-      month: "Dec 2025",
+      month: "dic 2025",
       income: 1000,
       outcome: 200,
       profitPercent: 80,
     });
     expect(monthlyData[1]).toEqual({
-      month: "Jan 2026",
+      month: "ene 2026",
       income: 300,
       outcome: 0,
       profitPercent: 100,

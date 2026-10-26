@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { type MonthlyDataPoint } from '@/lib/financial-types'
@@ -33,7 +34,7 @@ interface CustomTooltipProps {
 function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (!active || !payload?.length) return null
   return (
-    <div className="rounded-lg border border-border bg-card px-4 py-3 shadow-lg text-sm">
+    <div role="status" aria-atomic="true" className="rounded-lg border border-border bg-card px-4 py-3 shadow-lg text-sm">
       <p className="font-semibold text-foreground mb-2">{label}</p>
       {payload.map((entry) => (
         <div key={entry.name} className="flex items-center gap-2 py-0.5">
@@ -47,6 +48,9 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
 }
 
 export function IncomeOutcomeChart({ data, loading }: IncomeOutcomeChartProps) {
+  const titleId = useId()
+  const descriptionId = useId()
+
   if (loading) {
     return (
       <Card className="border-border/60">
@@ -66,17 +70,17 @@ export function IncomeOutcomeChart({ data, loading }: IncomeOutcomeChartProps) {
   return (
     <Card className="border-border/60">
       <CardHeader className="pb-4">
-        <CardTitle className="text-base font-semibold">Income vs. Outcome</CardTitle>
-        <CardDescription>Monthly revenue and expenditure evolution</CardDescription>
+        <CardTitle as="h2" id={titleId} className="text-base font-semibold">Ingresos y egresos</CardTitle>
+        <CardDescription id={descriptionId}>Importes mensuales de ingresos y gastos</CardDescription>
       </CardHeader>
       <CardContent>
         {!hasData ? (
           <div className="flex h-[280px] items-center justify-center text-muted-foreground text-sm">
-            No data available to display
+            No hay datos para mostrar
           </div>
         ) : (
           <ResponsiveContainer width="100%" height={280}>
-            <LineChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
+            <LineChart aria-labelledby={titleId} aria-describedby={descriptionId} data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeOpacity={0.6} />
               <XAxis
                 dataKey="month"
@@ -100,7 +104,7 @@ export function IncomeOutcomeChart({ data, loading }: IncomeOutcomeChartProps) {
               <Line
                 type="monotone"
                 dataKey="income"
-                name="income"
+                name="Ingresos"
                 stroke="var(--chart-income)"
                 strokeWidth={2}
                 dot={{ r: 3, fill: 'var(--chart-income)', strokeWidth: 0 }}
@@ -109,15 +113,42 @@ export function IncomeOutcomeChart({ data, loading }: IncomeOutcomeChartProps) {
               <Line
                 type="monotone"
                 dataKey="outcome"
-                name="outcome"
+                name="Egresos"
                 stroke="var(--chart-outcome)"
                 strokeWidth={2}
+                strokeDasharray="6 4"
                 dot={{ r: 3, fill: 'var(--chart-outcome)', strokeWidth: 0 }}
                 activeDot={{ r: 5, strokeWidth: 0 }}
               />
             </LineChart>
           </ResponsiveContainer>
         )}
+        {hasData ? (
+          <details className="mt-4 text-sm">
+            <summary className="cursor-pointer py-2 font-medium">Ver datos mensuales de ingresos y egresos</summary>
+            <div role="region" aria-label="Datos mensuales de ingresos y egresos" tabIndex={0} className="overflow-x-auto">
+              <table className="w-full min-w-[360px] text-left text-sm">
+                <caption className="sr-only">Ingresos y egresos por mes, en USD</caption>
+                <thead className="border-b border-border">
+                  <tr>
+                    <th scope="col" className="px-3 py-3">Mes</th>
+                    <th scope="col" className="px-3 py-3 text-right">Ingresos</th>
+                    <th scope="col" className="px-3 py-3 text-right">Egresos</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/70">
+                  {data.map((point) => (
+                    <tr key={point.month}>
+                      <th scope="row" className="px-3 py-3 font-medium">{point.month}</th>
+                      <td className="px-3 py-3 text-right tabular-nums">{formatCurrency(point.income)}</td>
+                      <td className="px-3 py-3 text-right tabular-nums">{formatCurrency(point.outcome)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        ) : null}
       </CardContent>
     </Card>
   )

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { type MetricsAlert } from "@/lib/financial-types";
 
@@ -26,6 +26,7 @@ export function AlertsTable({
   onThresholdChange,
 }: AlertsTableProps) {
   const [thresholdInput, setThresholdInput] = useState(String(threshold));
+  const titleId = useId();
 
   useEffect(() => setThresholdInput(String(threshold)), [threshold]);
 
@@ -33,7 +34,7 @@ export function AlertsTable({
     <Card className="border-border/60">
       <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="grid gap-2">
-          <CardTitle className="text-base font-semibold">Alertas de anomalías</CardTitle>
+          <CardTitle as="h2" id={titleId} className="text-base font-semibold">Alertas de anomalías</CardTitle>
           <CardDescription>
             Períodos con gasto superior a la media de todos los períodos anteriores
           </CardDescription>
@@ -68,12 +69,15 @@ export function AlertsTable({
         </label>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] text-left text-sm">
+        <p role="status" className="sr-only">
+          {loading ? "Cargando alertas." : error ? "" : `${alerts.length} alertas para el umbral y rango seleccionados.`}
+        </p>
+        <div role="region" aria-label="Tabla de alertas de anomalías" tabIndex={0} className="overflow-x-auto">
+          <table aria-labelledby={titleId} aria-busy={loading} className="w-full min-w-[640px] text-left text-sm">
             <thead className="border-b border-border text-xs uppercase tracking-wide text-muted-foreground">
               <tr>
                 <th scope="col" className="px-3 py-3">Período</th>
-                <th scope="col" className="px-3 py-3 text-right">Outcome registrado</th>
+                <th scope="col" className="px-3 py-3 text-right">Egresos registrados</th>
                 <th scope="col" className="px-3 py-3 text-right">Media de períodos anteriores</th>
                 <th scope="col" className="px-3 py-3 text-right">Incremento</th>
               </tr>
@@ -82,7 +86,7 @@ export function AlertsTable({
               {error ? (
                 <tr>
                   <td colSpan={4} className="px-3 py-8 text-center text-destructive">
-                    {error}
+                    <p role="alert">{error}</p>
                   </td>
                 </tr>
               ) : loading ? (

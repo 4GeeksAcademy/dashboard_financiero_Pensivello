@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -43,11 +43,11 @@ interface BusinessComparisonPageProps {
 }
 
 const CATEGORY_LABELS: Record<Category, string> = {
-  suppliers: "Suppliers",
-  sales: "Sales",
-  operational: "Operational",
-  administrative: "Administrative",
-  others: "Others",
+  suppliers: "Proveedores",
+  sales: "Ventas",
+  operational: "Operaciones",
+  administrative: "Administración",
+  others: "Otros",
 };
 
 const formatCurrency = (value: number) =>
@@ -103,16 +103,17 @@ function BusinessCategoryTable({
   loading: boolean;
 }) {
   const categories = filterAvailableCategories(group.categories, availableCategories);
+  const titleId = useId();
 
   return (
     <Card className="border-border/60">
       <CardHeader>
-        <CardTitle className="text-base font-semibold">{group.businessType}</CardTitle>
+        <CardTitle as="h3" id={titleId} className="text-base font-semibold">{group.businessType}</CardTitle>
         <CardDescription>Total de ingresos: {formatCurrency(totalIncome)}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[360px] text-left text-sm">
+        <div role="region" aria-labelledby={titleId} tabIndex={0} className="overflow-x-auto">
+          <table aria-labelledby={titleId} aria-busy={loading} className="w-full min-w-[360px] text-left text-sm">
             <thead className="border-b border-border text-xs uppercase tracking-wide text-muted-foreground">
               <tr>
                 <th scope="col" className="px-3 py-3">Categoría</th>
@@ -162,6 +163,8 @@ export function BusinessComparisonPage({
   const [groups, setGroups] = useState<BusinessComparisonData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const chartTitleId = useId();
+  const chartDescriptionId = useId();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -206,7 +209,11 @@ export function BusinessComparisonPage({
         </div>
       ) : null}
 
-      <section aria-label="Top income categories by business" className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+      <p role="status" className="sr-only">
+        {loading ? "Cargando comparativa." : error ? "" : "Comparativa B2B y B2C actualizada para el rango seleccionado."}
+      </p>
+
+      <section aria-label="Principales categorías de ingresos por negocio" className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         {BUSINESS_GROUPS.map((businessType) => {
           const group = groups.find((item) => item.businessType === businessType) ?? {
             businessType,
@@ -227,8 +234,8 @@ export function BusinessComparisonPage({
 
       <Card className="border-border/60">
         <CardHeader>
-          <CardTitle className="text-base font-semibold">Ingresos totales por línea</CardTitle>
-          <CardDescription>Comparación del total de ingresos en el período seleccionado</CardDescription>
+          <CardTitle as="h3" id={chartTitleId} className="text-base font-semibold">Ingresos totales por línea</CardTitle>
+          <CardDescription id={chartDescriptionId}>Comparación del total de ingresos en el período seleccionado</CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -241,14 +248,19 @@ export function BusinessComparisonPage({
             </div>
           ) : (
             <ResponsiveContainer width="100%" height={280}>
-              <BarChart data={chartData} margin={{ top: 8, right: 12, left: 8, bottom: 8 }}>
+              <BarChart aria-labelledby={chartTitleId} aria-describedby={chartDescriptionId} data={chartData} margin={{ top: 8, right: 12, left: 8, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeOpacity={0.6} />
                 <XAxis dataKey="businessType" tick={{ fill: "var(--color-muted-foreground)" }} />
                 <YAxis
                   tick={{ fill: "var(--color-muted-foreground)" }}
                   tickFormatter={(value) => `$${(Number(value) / 1000).toFixed(0)}k`}
                 />
-                <Tooltip formatter={(value) => formatCurrency(Number(value))} />
+                <Tooltip
+                  formatter={(value) => formatCurrency(Number(value))}
+                  contentStyle={{ backgroundColor: "var(--card)", color: "var(--foreground)", borderColor: "var(--border)" }}
+                  itemStyle={{ color: "var(--foreground)" }}
+                  labelStyle={{ color: "var(--foreground)" }}
+                />
                 <Bar dataKey="totalIncome" name="Ingresos" fill="var(--chart-income)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
