@@ -117,7 +117,7 @@ function App() {
   };
 
   useEffect(() => {
-    document.title = `${activePage === "overview" ? "Resumen" : "Comparativa B2B vs B2C"} | Panel financiero`;
+    document.title = `${activePage === "overview" ? "Resumen" : "Comparativa B2B vs B2C"} | Dashboard financiero de demostración`;
   }, [activePage]);
 
   useEffect(() => {
