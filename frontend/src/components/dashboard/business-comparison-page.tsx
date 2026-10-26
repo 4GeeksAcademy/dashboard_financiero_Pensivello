@@ -36,6 +36,15 @@ interface BusinessComparisonData {
   categories: TopCategoryItem[];
 }
 
+interface BusinessComparisonResponse {
+  startDate: string;
+  endDate: string;
+  groups: BusinessComparisonData[];
+  error: string | null;
+}
+
+const EMPTY_COMPARISON_GROUPS: BusinessComparisonData[] = [];
+
 interface BusinessComparisonPageProps {
   startDate: string;
   endDate: string;
@@ -160,30 +169,38 @@ export function BusinessComparisonPage({
   endDate,
   availableCategories,
 }: BusinessComparisonPageProps) {
-  const [groups, setGroups] = useState<BusinessComparisonData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [response, setResponse] = useState<BusinessComparisonResponse | null>(null);
   const chartTitleId = useId();
   const chartDescriptionId = useId();
+  const loading = response?.startDate !== startDate || response?.endDate !== endDate;
+  const groups = response?.groups ?? EMPTY_COMPARISON_GROUPS;
+  const error = response && !loading ? response.error : null;
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
-    setError(null);
 
     Promise.all(
       BUSINESS_GROUPS.map((businessType) =>
         fetchGroupComparison(businessType, startDate, endDate, controller.signal),
       ),
     )
-      .then(setGroups)
+      .then((nextGroups) => {
+        setResponse({
+          startDate,
+          endDate,
+          groups: nextGroups,
+          error: null,
+        });
+      })
       .catch(() => {
         if (!controller.signal.aborted) {
-          setError("No se pudo cargar la comparativa B2B vs B2C.");
+          setResponse((current) => ({
+            startDate,
+            endDate,
+            groups: current?.groups ?? [],
+            error: "No se pudo cargar la comparativa B2B vs B2C.",
+          }));
         }
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) setLoading(false);
       });
 
     return () => controller.abort();

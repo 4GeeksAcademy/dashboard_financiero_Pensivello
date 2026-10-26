@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useId, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { type MetricsAlert } from "@/lib/financial-types";
 
@@ -18,6 +18,44 @@ interface AlertsTableProps {
   onThresholdChange: (threshold: number) => void
 }
 
+function ThresholdInput({
+  threshold,
+  onThresholdChange,
+}: {
+  threshold: number;
+  onThresholdChange: (threshold: number) => void;
+}) {
+  const [thresholdInput, setThresholdInput] = useState(String(threshold));
+
+  return (
+    <input
+      aria-label="Umbral de alerta"
+      className="h-9 w-24 rounded-md border border-input bg-background px-2 text-sm text-foreground"
+      type="number"
+      min={0.01}
+      max={1}
+      step={0.01}
+      value={thresholdInput}
+      onChange={(event) => {
+        const input = event.target.value;
+        setThresholdInput(input);
+        const value = Number(input);
+        if (input !== "" && Number.isFinite(value) && value >= 0.01 && value <= 1) {
+          onThresholdChange(value);
+        }
+      }}
+      onBlur={() => {
+        const value = Number(thresholdInput);
+        const normalized = thresholdInput === "" || !Number.isFinite(value)
+          ? threshold
+          : Math.min(1, Math.max(0.01, value));
+        setThresholdInput(String(normalized));
+        onThresholdChange(normalized);
+      }}
+    />
+  );
+}
+
 export function AlertsTable({
   alerts,
   threshold,
@@ -25,10 +63,7 @@ export function AlertsTable({
   error,
   onThresholdChange,
 }: AlertsTableProps) {
-  const [thresholdInput, setThresholdInput] = useState(String(threshold));
   const titleId = useId();
-
-  useEffect(() => setThresholdInput(String(threshold)), [threshold]);
 
   return (
     <Card className="border-border/60">
@@ -41,30 +76,10 @@ export function AlertsTable({
         </div>
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
           Umbral
-          <input
-            aria-label="Umbral de alerta"
-            className="h-9 w-24 rounded-md border border-input bg-background px-2 text-sm text-foreground"
-            type="number"
-            min={0.01}
-            max={1}
-            step={0.01}
-            value={thresholdInput}
-            onChange={(event) => {
-              const input = event.target.value;
-              setThresholdInput(input);
-              const value = Number(input);
-              if (input !== "" && Number.isFinite(value) && value >= 0.01 && value <= 1) {
-                onThresholdChange(value);
-              }
-            }}
-            onBlur={() => {
-              const value = Number(thresholdInput);
-              const normalized = thresholdInput === "" || !Number.isFinite(value)
-                ? threshold
-                : Math.min(1, Math.max(0.01, value));
-              setThresholdInput(String(normalized));
-              onThresholdChange(normalized);
-            }}
+          <ThresholdInput
+            key={threshold}
+            threshold={threshold}
+            onThresholdChange={onThresholdChange}
           />
         </label>
       </CardHeader>

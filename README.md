@@ -49,6 +49,17 @@ If you need to target a different backend origin, copy `frontend/.env.example` t
 - Backend: http://localhost:8000
 - API documentation: http://localhost:8000/docs
 
+## Production frontend image
+
+The Docker Compose setup above keeps the Vite development server. To build the static production image:
+
+```bash
+docker build --target production -t dashboard-frontend ./frontend
+docker run --rm -p 8080:80 dashboard-frontend
+```
+
+The image serves optimized Vite assets with Nginx, supports SPA fallback, and proxies `/api/` to `backend:8000`. For API requests to work, connect the container to a Docker network where the backend is reachable by that name, or update `frontend/nginx.conf` to use the backend host before building.
+
 ---
 
 This and many other projects are built by students as part of the [Career Programs](https://4geeksacademy.com/compare-programs) at [4Geeks Academy](https://4geeksacademy.com). By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project/graphs/contributors). Find out more about [AI Engineering](https://4geeksacademy.com/en/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/en/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/coding-bootcamps/cybersecurity) and [Full-Stack Software Developer with AI](https://4geeksacademy.com/en/coding-bootcamps/full-stack-developer).

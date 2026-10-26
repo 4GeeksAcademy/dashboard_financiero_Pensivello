@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { KPIRow } from "@/components/dashboard/kpi-row";
-import { IncomeOutcomeChart } from "@/components/dashboard/income-outcome-chart";
-import { ProfitPercentChart } from "@/components/dashboard/profit-percent-chart";
 import {
   type FinancialMovement,
   type MetricsAlert,
@@ -13,9 +11,36 @@ import {
 import { computeKPIs, computeMonthlyData } from "@/lib/financial-utils";
 import { buildAlertsQuery, buildDateRangeQuery } from "@/lib/date-range";
 import { AlertsTable } from "@/components/dashboard/alerts-table";
-import { BusinessComparisonPage } from "@/components/dashboard/business-comparison-page";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
+const IncomeOutcomeChart = lazy(() =>
+  import("@/components/dashboard/income-outcome-chart").then((module) => ({
+    default: module.IncomeOutcomeChart,
+  })),
+);
+const ProfitPercentChart = lazy(() =>
+  import("@/components/dashboard/profit-percent-chart").then((module) => ({
+    default: module.ProfitPercentChart,
+  })),
+);
+const BusinessComparisonPage = lazy(() =>
+  import("@/components/dashboard/business-comparison-page").then((module) => ({
+    default: module.BusinessComparisonPage,
+  })),
+);
+
+const CHARTS_LOADING_FALLBACK = (
+  <section
+    aria-label="Gráficos financieros"
+    aria-busy="true"
+    className="grid grid-cols-1 gap-4 xl:grid-cols-2"
+  >
+    <Skeleton className="h-[360px] w-full" />
+    <Skeleton className="h-[360px] w-full" />
+    <span className="sr-only" role="status">Cargando gráficos financieros.</span>
+  </section>
+);
 
 async function fetchFinancialData(
   startDate: string,
@@ -71,6 +96,26 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const handleDateRangeChange = (field: "startDate" | "endDate", value: string) => {
+    if (value === (field === "startDate" ? startDate : endDate)) return;
+    setLoading(true);
+    setError(null);
+    setAlertsLoading(true);
+    setAlertsError(null);
+    if (field === "startDate") {
+      setStartDate(value);
+    } else {
+      setEndDate(value);
+    }
+  };
+
+  const handleAlertThresholdChange = (threshold: number) => {
+    if (threshold === alertThreshold) return;
+    setAlertsLoading(true);
+    setAlertsError(null);
+    setAlertThreshold(threshold);
+  };
+
   useEffect(() => {
     document.title = `${activePage === "overview" ? "Resumen" : "Comparativa B2B vs B2C"} | Panel financiero`;
   }, [activePage]);
@@ -92,8 +137,6 @@ function App() {
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
-    setError(null);
 
     fetchFinancialData(startDate, endDate, controller.signal)
       .then((movements) => {
@@ -116,8 +159,6 @@ function App() {
 
   useEffect(() => {
     const controller = new AbortController();
-    setAlertsLoading(true);
-    setAlertsError(null);
 
     fetchMetricsAlerts(
       alertThreshold,
@@ -181,7 +222,7 @@ function App() {
                   value={startDate}
                   min={facets?.min_date}
                   max={endDate || facets?.max_date}
-                  onChange={(event) => setStartDate(event.target.value)}
+                  onChange={(event) => handleDateRangeChange("startDate", event.target.value)}
                 />
               </label>
               <label className="flex flex-col gap-1.5 text-sm font-medium text-foreground">
@@ -193,7 +234,7 @@ function App() {
                   value={endDate}
                   min={startDate || facets?.min_date}
                   max={facets?.max_date}
-                  onChange={(event) => setEndDate(event.target.value)}
+                  onChange={(event) => handleDateRangeChange("endDate", event.target.value)}
                 />
               </label>
             </div>
@@ -227,8 +268,10 @@ function App() {
                 aria-busy={loading}
                 className="grid grid-cols-1 gap-4 xl:grid-cols-2"
               >
-                <IncomeOutcomeChart data={monthlyData} loading={loading} />
-                <ProfitPercentChart data={monthlyData} loading={loading} />
+                <Suspense fallback={CHARTS_LOADING_FALLBACK}>
+                  <IncomeOutcomeChart data={monthlyData} loading={loading} />
+                  <ProfitPercentChart data={monthlyData} loading={loading} />
+                </Suspense>
               </section>
 
               <section aria-label="Alertas de anomalías">
@@ -237,16 +280,24 @@ function App() {
                   threshold={alertThreshold}
                   loading={alertsLoading}
                   error={alertsError}
-                  onThresholdChange={setAlertThreshold}
+                  onThresholdChange={handleAlertThresholdChange}
                 />
               </section>
             </>
           ) : (
-            <BusinessComparisonPage
-              startDate={startDate}
-              endDate={endDate}
-              availableCategories={facets?.categories ?? []}
-            />
+            <Suspense
+              fallback={
+                <div role="status" className="py-8 text-center text-sm text-muted-foreground">
+                  Cargando comparativa…
+                </div>
+              }
+            >
+              <BusinessComparisonPage
+                startDate={startDate}
+                endDate={endDate}
+                availableCategories={facets?.categories ?? []}
+              />
+            </Suspense>
           )}
         </div>
       </div>

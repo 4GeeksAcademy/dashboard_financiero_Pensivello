@@ -49,6 +49,17 @@ Si necesitas apuntar a otro backend, copia `frontend/.env.example` como `.env` y
 - Backend: http://localhost:8000
 - Documentación API: http://localhost:8000/docs
 
+## Imagen de producción del frontend
+
+El Docker Compose anterior conserva el servidor de desarrollo de Vite. Para construir la imagen estática de producción:
+
+```bash
+docker build --target production -t dashboard-frontend ./frontend
+docker run --rm -p 8080:80 dashboard-frontend
+```
+
+La imagen sirve los archivos optimizados de Vite con Nginx, aplica fallback SPA y reenvía `/api/` a `backend:8000`. Para que la API funcione, conecta el contenedor a una red Docker donde el backend sea accesible con ese nombre, o ajusta `frontend/nginx.conf` al host del backend antes de construir la imagen.
+
 ---
 
 Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/) de 4Geeks Academy. Encuentra más acerca de los [cursos](https://4geeksacademy.com/es/comparar-programas) de [Ingeniería de IA](https://4geeksacademy.com/es/coding-bootcamps/ingenieria-ia), [Data Science & Machine Learning](https://4geeksacademy.com/es/coding-bootcamps/curso-datascience-machine-learning), [Ciberseguridad](https://4geeksacademy.com/es/coding-bootcamps/curso-ciberseguridad) y [Full-Stack Software Developer con IA](https://4geeksacademy.com/es/coding-bootcamps/programador-full-stack).
