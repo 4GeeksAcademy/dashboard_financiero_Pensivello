@@ -1,0 +1,1649 @@
+{
+  "timestamp": "2026-11-03T20:40:54.755Z",
+  "url": "http://localhost:8080/",
+  "browser": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "axe": "4.14.0",
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "scope": "Production frontend image against local Compose mock API. Loaded views and expanded data tables only; not full WCAG certification, error/empty-state coverage, or a physical screen-reader test.",
+  "audits": [
+    {
+      "view": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "name": "Resumen",
+      "violations": [],
+      "passedRuleIds": [
+        "aria-allowed-attr",
+        "aria-conditional-attr",
+        "aria-deprecated-role",
+        "aria-hidden-body",
+        "aria-hidden-focus",
+        "aria-prohibited-attr",
+        "aria-required-attr",
+        "aria-roles",
+        "aria-valid-attr-value",
+        "aria-valid-attr",
+        "avoid-inline-spacing",
+        "button-name",
+        "color-contrast",
+        "document-title",
+        "duplicate-id-aria",
+        "form-field-multiple-labels",
+        "html-has-lang",
+        "html-lang-valid",
+        "label",
+        "list",
+        "listitem",
+        "meta-viewport",
+        "nested-interactive",
+        "summary-name",
+        "target-size",
+        "td-headers-attr",
+        "th-has-data-cells"
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".legend-item-0 > .recharts-legend-item-text > .capitalize.text-xs"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                ".legend-item-1 > .recharts-legend-item-text > .capitalize.text-xs"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"92.9090909090909\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"182.72727272727272\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"272.5454545454545\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"362.3636363636364\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"452.18181818181813\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[x=\"523.5\"][y=\"234\"][height=\"30\"] > tspan[x=\"523.5\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"226\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"170.5\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"115\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"59.5\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"8.25\"][width=\"48\"][orientation=\"left\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"85.63636363636365\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"176.90909090909093\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"268.1818181818182\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"359.4545454545455\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"450.72727272727275\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[x=\"523.5\"][y=\"258\"][height=\"30\"] > tspan[x=\"523.5\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"250\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"188.5\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"127\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"65.5\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"8.25\"][width=\"40\"][orientation=\"left\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            }
+          ]
+        }
+      ],
+      "incompleteReview": "SVG/legend text manually measured against solid card background; Chromium canvas converts computed OKLCH colors to sRGB; see contrast samples.",
+      "contrast": [
+        {
+          "name": "texto/fondo",
+          "foreground": [
+            232,
+            236,
+            238
+          ],
+          "background": [
+            5,
+            8,
+            11
+          ],
+          "ratio": 16.89,
+          "minimum": 4.5
+        },
+        {
+          "name": "texto secundario/tarjeta",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        },
+        {
+          "name": "borde input/fondo",
+          "foreground": [
+            106,
+            115,
+            122
+          ],
+          "background": [
+            5,
+            8,
+            11
+          ],
+          "ratio": 4.15,
+          "minimum": 3
+        },
+        {
+          "name": "borde input/tarjeta",
+          "foreground": [
+            106,
+            115,
+            122
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 3.9,
+          "minimum": 3
+        },
+        {
+          "name": "foco/tarjeta",
+          "foreground": [
+            232,
+            236,
+            238
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 15.84,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-income",
+          "foreground": [
+            12,
+            132,
+            250
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.11,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-outcome",
+          "foreground": [
+            243,
+            100,
+            81
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 6.05,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-profit",
+          "foreground": [
+            0,
+            172,
+            108
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 6.38,
+          "minimum": 3
+        },
+        {
+          "name": "texto ejes SVG",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        },
+        {
+          "name": "texto leyenda SVG",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        }
+      ],
+      "aria": {
+        "missing": [],
+        "imageElements": 0,
+        "imagesWithoutAlt": 0,
+        "svgAlternatives": [
+          {
+            "role": "application",
+            "label": "Ingresos y egresos",
+            "description": "Importes mensuales de ingresos y gastos"
+          },
+          {
+            "role": "application",
+            "label": "Margen de beneficio",
+            "description": "Beneficio mensual como porcentaje de los ingresos"
+          }
+        ]
+      },
+      "accessibilityTree": "- main:\n  - heading \"Panel financiero\" [level=1]\n  - paragraph: Resumen de indicadores financieros\n  - text: Todas las fechas disponibles\n  - navigation \"Vistas del panel\":\n    - button \"Resumen\"\n    - button \"Comparativa B2B vs B2C\"\n  - region \"Filtro de fechas\":\n    - text: Fecha de inicio\n    - textbox \"Fecha de inicio\"\n    - text: Fecha de fin\n    - textbox \"Fecha de fin\"\n    - paragraph: \"Rango disponible: 2025-11-01 — 2026-10-28\"\n  - status: Datos financieros actualizados para el rango seleccionado.\n  - region \"Indicadores financieros\":\n    - heading \"Ingresos totales\" [level=2]\n    - paragraph: $1,258,147\n    - paragraph: Ingresos acumulados de todos los movimientos\n    - heading \"Egresos totales\" [level=2]\n    - paragraph: $762,132\n    - paragraph: Gastos acumulados de todas las categorías\n    - heading \"Beneficio\" [level=2]\n    - paragraph: $496,015\n    - paragraph: \"Beneficio neto: ingresos menos egresos\"\n    - heading \"Margen de beneficio\" [level=2]\n    - paragraph: 39.4%\n    - paragraph: Beneficio como porcentaje de los ingresos\n  - region \"Gráficos financieros\":\n    - heading \"Ingresos y egresos\" [level=2]\n    - text: Importes mensuales de ingresos y gastos\n    - list:\n      - listitem:\n        - img \"Egresos legend icon\"\n        - text: Egresos\n      - listitem:\n        - img \"Ingresos legend icon\"\n        - text: Ingresos\n    - application \"Ingresos y egresos\": dic 2025 feb 2026 abr 2026 jun 2026 ago 2026 oct 2026 $0k $45k $90k $135k $180k\n    - group:\n      - text: Ver datos mensuales de ingresos y egresos\n      - region \"Datos mensuales de ingresos y egresos\":\n        - table \"Ingresos y egresos por mes, en USD\":\n          - caption: Ingresos y egresos por mes, en USD\n          - rowgroup:\n            - row \"Mes Ingresos Egresos\":\n              - columnheader \"Mes\"\n              - columnheader \"Ingresos\"\n              - columnheader \"Egresos\"\n          - rowgroup:\n            - row \"nov 2025 $111,027 $41,404\":\n              - rowheader \"nov 2025\"\n              - cell \"$111,027\"\n              - cell \"$41,404\"\n            - row \"dic 2025 $68,361 $103,379\":\n              - rowheader \"dic 2025\"\n              - cell \"$68,361\"\n              - cell \"$103,379\"\n            - row \"ene 2026 $99,747 $51,691\":\n              - rowheader \"ene 2026\"\n              - cell \"$99,747\"\n              - cell \"$51,691\"\n            - row \"feb 2026 $161,925 $24,863\":\n              - rowheader \"feb 2026\"\n              - cell \"$161,925\"\n              - cell \"$24,863\"\n            - row \"mar 2026 $67,789 $88,077\":\n              - rowheader \"mar 2026\"\n              - cell \"$67,789\"\n              - cell \"$88,077\"\n            - row \"abr 2026 $132,321 $51,666\":\n              - rowheader \"abr 2026\"\n              - cell \"$132,321\"\n              - cell \"$51,666\"\n            - row \"may 2026 $130,423 $40,836\":\n              - rowheader \"may 2026\"\n              - cell \"$130,423\"\n              - cell \"$40,836\"\n            - row \"jun 2026 $105,541 $80,212\":\n              - rowheader \"jun 2026\"\n              - cell \"$105,541\"\n              - cell \"$80,212\"\n            - row \"jul 2026 $122,148 $60,500\":\n              - rowheader \"jul 2026\"\n              - cell \"$122,148\"\n              - cell \"$60,500\"\n            - row \"ago 2026 $84,955 $82,189\":\n              - rowheader \"ago 2026\"\n              - cell \"$84,955\"\n              - cell \"$82,189\"\n            - row \"sept 2026 $67,000 $76,372\":\n              - rowheader \"sept 2026\"\n              - cell \"$67,000\"\n              - cell \"$76,372\"\n            - row \"oct 2026 $106,910 $60,944\":\n              - rowheader \"oct 2026\"\n              - cell \"$106,910\"\n              - cell \"$60,944\"\n    - heading \"Margen de beneficio\" [level=2]\n    - text: Beneficio mensual como porcentaje de los ingresos\n    - application \"Margen de beneficio\": dic 2025 feb 2026 abr 2026 jun 2026 ago 2026 oct 2026 -90% -45% 0% 45% 90%\n    - group:\n      - text: Ver datos mensuales del margen de beneficio\n      - region \"Datos mensuales del margen de beneficio\":\n        - table \"Margen de beneficio por mes\":\n          - caption: Margen de beneficio por mes\n          - rowgroup:\n            - row \"Mes Margen (%)\":\n              - columnheader \"Mes\"\n              - columnheader \"Margen (%)\"\n          - rowgroup:\n            - row \"nov 2025 62.7%\":\n              - rowheader \"nov 2025\"\n              - cell \"62.7%\"\n            - row \"dic 2025 -51.2%\":\n              - rowheader \"dic 2025\"\n              - cell \"-51.2%\"\n            - row \"ene 2026 48.2%\":\n              - rowheader \"ene 2026\"\n              - cell \"48.2%\"\n            - row \"feb 2026 84.6%\":\n              - rowheader \"feb 2026\"\n              - cell \"84.6%\"\n            - row \"mar 2026 -29.9%\":\n              - rowheader \"mar 2026\"\n              - cell \"-29.9%\"\n            - row \"abr 2026 61.0%\":\n              - rowheader \"abr 2026\"\n              - cell \"61.0%\"\n            - row \"may 2026 68.7%\":\n              - rowheader \"may 2026\"\n              - cell \"68.7%\"\n            - row \"jun 2026 24.0%\":\n              - rowheader \"jun 2026\"\n              - cell \"24.0%\"\n            - row \"jul 2026 50.5%\":\n              - rowheader \"jul 2026\"\n              - cell \"50.5%\"\n            - row \"ago 2026 3.3%\":\n              - rowheader \"ago 2026\"\n              - cell \"3.3%\"\n            - row \"sept 2026 -14.0%\":\n              - rowheader \"sept 2026\"\n              - cell \"-14.0%\"\n            - row \"oct 2026 43.0%\":\n              - rowheader \"oct 2026\"\n              - cell \"43.0%\"\n  - region \"Alertas de anomalías\":\n    - heading \"Alertas de anomalías\" [level=2]\n    - text: Períodos con gasto superior a la media de todos los períodos anteriores Umbral\n    - spinbutton \"Umbral de alerta\": \"0.3\"\n    - status: 4 alertas para el umbral y rango seleccionados.\n    - region \"Tabla de alertas de anomalías\":\n      - table \"Alertas de anomalías\":\n        - rowgroup:\n          - row \"Período Egresos registrados Media de períodos anteriores Incremento\":\n            - columnheader \"Período\"\n            - columnheader \"Egresos registrados\"\n            - columnheader \"Media de períodos anteriores\"\n            - columnheader \"Incremento\"\n        - rowgroup:\n          - row \"2025-12 $103,378.98 $41,404.44 149.7%\":\n            - cell \"2025-12\"\n            - cell \"$103,378.98\"\n            - cell \"$41,404.44\"\n            - cell \"149.7%\"\n          - row \"2026-03 $88,076.90 $55,334.29 59.2%\":\n            - cell \"2026-03\"\n            - cell \"$88,076.90\"\n            - cell \"$55,334.29\"\n            - cell \"59.2%\"\n          - row \"2026-06 $80,212.01 $57,416.50 39.7%\":\n            - cell \"2026-06\"\n            - cell \"$80,212.01\"\n            - cell \"$57,416.50\"\n            - cell \"39.7%\"\n          - row \"2026-08 $82,189.37 $60,291.89 36.3%\":\n            - cell \"2026-08\"\n            - cell \"$82,189.37\"\n            - cell \"$60,291.89\"\n            - cell \"36.3%\""
+    },
+    {
+      "view": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "name": "Comparativa B2B vs B2C",
+      "violations": [],
+      "passedRuleIds": [
+        "aria-allowed-attr",
+        "aria-conditional-attr",
+        "aria-deprecated-role",
+        "aria-hidden-body",
+        "aria-hidden-focus",
+        "aria-prohibited-attr",
+        "aria-required-attr",
+        "aria-roles",
+        "aria-valid-attr-value",
+        "aria-valid-attr",
+        "button-name",
+        "color-contrast",
+        "document-title",
+        "form-field-multiple-labels",
+        "html-has-lang",
+        "html-lang-valid",
+        "label",
+        "meta-viewport",
+        "nested-interactive",
+        "target-size"
+      ],
+      "incomplete": [],
+      "incompleteReview": "SVG/legend text manually measured against solid card background; Chromium canvas converts computed OKLCH colors to sRGB; see contrast samples.",
+      "contrast": [
+        {
+          "name": "texto/fondo",
+          "foreground": [
+            232,
+            236,
+            238
+          ],
+          "background": [
+            5,
+            8,
+            11
+          ],
+          "ratio": 16.89,
+          "minimum": 4.5
+        },
+        {
+          "name": "texto secundario/tarjeta",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        },
+        {
+          "name": "borde input/fondo",
+          "foreground": [
+            106,
+            115,
+            122
+          ],
+          "background": [
+            5,
+            8,
+            11
+          ],
+          "ratio": 4.15,
+          "minimum": 3
+        },
+        {
+          "name": "borde input/tarjeta",
+          "foreground": [
+            106,
+            115,
+            122
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 3.9,
+          "minimum": 3
+        },
+        {
+          "name": "foco/tarjeta",
+          "foreground": [
+            232,
+            236,
+            238
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 15.84,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-income",
+          "foreground": [
+            12,
+            132,
+            250
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.11,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-outcome",
+          "foreground": [
+            243,
+            100,
+            81
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 6.05,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-profit",
+          "foreground": [
+            0,
+            172,
+            108
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 6.38,
+          "minimum": 3
+        },
+        {
+          "name": "texto ejes SVG",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        }
+      ],
+      "aria": {
+        "missing": [],
+        "imageElements": 0,
+        "imagesWithoutAlt": 0,
+        "svgAlternatives": [
+          {
+            "role": "application",
+            "label": "Ingresos totales por línea",
+            "description": "Comparación del total de ingresos en el período seleccionado"
+          }
+        ]
+      },
+      "accessibilityTree": "- main:\n  - heading \"Panel financiero\" [level=1]\n  - paragraph: Resumen de indicadores financieros\n  - text: Todas las fechas disponibles\n  - navigation \"Vistas del panel\":\n    - button \"Resumen\"\n    - button \"Comparativa B2B vs B2C\"\n  - region \"Filtro de fechas\":\n    - text: Fecha de inicio\n    - textbox \"Fecha de inicio\"\n    - text: Fecha de fin\n    - textbox \"Fecha de fin\"\n    - paragraph: \"Rango disponible: 2025-11-01 — 2026-10-28\"\n  - status: Datos financieros actualizados para el rango seleccionado.\n  - heading \"Comparativa B2B vs B2C\" [level=2]\n  - paragraph: Ingresos y categorías principales por línea de negocio\n  - status: Comparativa B2B y B2C actualizada para el rango seleccionado.\n  - region \"Principales categorías de ingresos por negocio\":\n    - heading \"B2B\" [level=3]\n    - text: \"Total de ingresos: $615,541\"\n    - region \"B2B\":\n      - table \"B2B\":\n        - rowgroup:\n          - row \"Categoría Ingresos % del grupo\":\n            - columnheader \"Categoría\"\n            - columnheader \"Ingresos\"\n            - columnheader \"% del grupo\"\n        - rowgroup:\n          - row \"Ventas $557,904 90.6%\":\n            - cell \"Ventas\"\n            - cell \"$557,904\"\n            - cell \"90.6%\"\n          - row \"Otros $57,637 9.4%\":\n            - cell \"Otros\"\n            - cell \"$57,637\"\n            - cell \"9.4%\"\n    - heading \"B2C\" [level=3]\n    - text: \"Total de ingresos: $642,606\"\n    - region \"B2C\":\n      - table \"B2C\":\n        - rowgroup:\n          - row \"Categoría Ingresos % del grupo\":\n            - columnheader \"Categoría\"\n            - columnheader \"Ingresos\"\n            - columnheader \"% del grupo\"\n        - rowgroup:\n          - row \"Ventas $574,193 89.4%\":\n            - cell \"Ventas\"\n            - cell \"$574,193\"\n            - cell \"89.4%\"\n          - row \"Otros $68,413 10.6%\":\n            - cell \"Otros\"\n            - cell \"$68,413\"\n            - cell \"10.6%\"\n  - heading \"Ingresos totales por línea\" [level=3]\n  - text: Comparación del total de ingresos en el período seleccionado\n  - application \"Ingresos totales por línea\": B2B B2C $0k $200k $400k $600k $800k"
+    },
+    {
+      "view": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "name": "Resumen",
+      "violations": [],
+      "passedRuleIds": [
+        "aria-allowed-attr",
+        "aria-conditional-attr",
+        "aria-deprecated-role",
+        "aria-hidden-body",
+        "aria-hidden-focus",
+        "aria-prohibited-attr",
+        "aria-required-attr",
+        "aria-roles",
+        "aria-valid-attr-value",
+        "aria-valid-attr",
+        "avoid-inline-spacing",
+        "button-name",
+        "color-contrast",
+        "document-title",
+        "duplicate-id-aria",
+        "form-field-multiple-labels",
+        "html-has-lang",
+        "html-lang-valid",
+        "label",
+        "list",
+        "listitem",
+        "meta-viewport",
+        "nested-interactive",
+        "scrollable-region-focusable",
+        "summary-name",
+        "target-size",
+        "td-headers-attr",
+        "th-has-data-cells"
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".legend-item-0 > .recharts-legend-item-text > .capitalize.text-xs"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                ".legend-item-1 > .recharts-legend-item-text > .capitalize.text-xs"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"70.9090909090909\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"139.63636363636363\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"208.36363636363637\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[x=\"281.5\"][y=\"234\"][height=\"30\"] > tspan[x=\"281.5\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"226\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"170.5\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"115\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"59.5\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"8.25\"][width=\"48\"][orientation=\"left\"] > tspan[dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                ".min-w-\\[360px\\] > thead > tr > th[scope=\"col\"]:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".min-w-\\[360px\\] > tbody > tr:nth-child(1) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".min-w-\\[360px\\] > tbody > tr:nth-child(2) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".min-w-\\[360px\\] > tbody > tr:nth-child(3) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".min-w-\\[360px\\] > tbody > tr:nth-child(4) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(5) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(6) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(7) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(8) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(9) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(10) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(11) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(12) > .tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tspan[x=\"63.63636363636364\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"134.54545454545456\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "tspan[x=\"205.45454545454547\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[x=\"281.5\"][y=\"258\"][height=\"30\"] > tspan[x=\"281.5\"][dy=\"0.71em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"250\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"188.5\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"127\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"65.5\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "text[y=\"8.25\"][width=\"40\"][orientation=\"left\"] > tspan[x=\"32\"][dy=\"0.355em\"]"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                ".min-w-\\[640px\\] > thead > tr > th[scope=\"col\"]:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "th[scope=\"col\"]:nth-child(4)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(1) > .text-foreground.tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(1) > .text-foreground.tabular-nums:nth-child(4)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(2) > .text-foreground.tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(2) > .text-foreground.tabular-nums:nth-child(4)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(3) > .text-foreground.tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(3) > .text-foreground.tabular-nums:nth-child(4)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(4) > .text-foreground.tabular-nums:nth-child(3)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "tr:nth-child(4) > .text-foreground.tabular-nums:nth-child(4)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "incompleteReview": "SVG/legend text manually measured against solid card background; Chromium canvas converts computed OKLCH colors to sRGB; see contrast samples.",
+      "contrast": [
+        {
+          "name": "texto/fondo",
+          "foreground": [
+            232,
+            236,
+            238
+          ],
+          "background": [
+            5,
+            8,
+            11
+          ],
+          "ratio": 16.89,
+          "minimum": 4.5
+        },
+        {
+          "name": "texto secundario/tarjeta",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        },
+        {
+          "name": "borde input/fondo",
+          "foreground": [
+            106,
+            115,
+            122
+          ],
+          "background": [
+            5,
+            8,
+            11
+          ],
+          "ratio": 4.15,
+          "minimum": 3
+        },
+        {
+          "name": "borde input/tarjeta",
+          "foreground": [
+            106,
+            115,
+            122
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 3.9,
+          "minimum": 3
+        },
+        {
+          "name": "foco/tarjeta",
+          "foreground": [
+            232,
+            236,
+            238
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 15.84,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-income",
+          "foreground": [
+            12,
+            132,
+            250
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.11,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-outcome",
+          "foreground": [
+            243,
+            100,
+            81
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 6.05,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-profit",
+          "foreground": [
+            0,
+            172,
+            108
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 6.38,
+          "minimum": 3
+        },
+        {
+          "name": "texto ejes SVG",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        },
+        {
+          "name": "texto leyenda SVG",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        }
+      ],
+      "aria": {
+        "missing": [],
+        "imageElements": 0,
+        "imagesWithoutAlt": 0,
+        "svgAlternatives": [
+          {
+            "role": "application",
+            "label": "Ingresos y egresos",
+            "description": "Importes mensuales de ingresos y gastos"
+          },
+          {
+            "role": "application",
+            "label": "Margen de beneficio",
+            "description": "Beneficio mensual como porcentaje de los ingresos"
+          }
+        ]
+      },
+      "accessibilityTree": "- main:\n  - heading \"Panel financiero\" [level=1]\n  - paragraph: Resumen de indicadores financieros\n  - text: Todas las fechas disponibles\n  - navigation \"Vistas del panel\":\n    - button \"Resumen\"\n    - button \"Comparativa B2B vs B2C\"\n  - region \"Filtro de fechas\":\n    - text: Fecha de inicio\n    - textbox \"Fecha de inicio\"\n    - text: Fecha de fin\n    - textbox \"Fecha de fin\"\n    - paragraph: \"Rango disponible: 2025-11-01 — 2026-10-28\"\n  - status: Datos financieros actualizados para el rango seleccionado.\n  - region \"Indicadores financieros\":\n    - heading \"Ingresos totales\" [level=2]\n    - paragraph: $1,258,147\n    - paragraph: Ingresos acumulados de todos los movimientos\n    - heading \"Egresos totales\" [level=2]\n    - paragraph: $762,132\n    - paragraph: Gastos acumulados de todas las categorías\n    - heading \"Beneficio\" [level=2]\n    - paragraph: $496,015\n    - paragraph: \"Beneficio neto: ingresos menos egresos\"\n    - heading \"Margen de beneficio\" [level=2]\n    - paragraph: 39.4%\n    - paragraph: Beneficio como porcentaje de los ingresos\n  - region \"Gráficos financieros\":\n    - heading \"Ingresos y egresos\" [level=2]\n    - text: Importes mensuales de ingresos y gastos\n    - list:\n      - listitem:\n        - img \"Egresos legend icon\"\n        - text: Egresos\n      - listitem:\n        - img \"Ingresos legend icon\"\n        - text: Ingresos\n    - application \"Ingresos y egresos\": dic 2025 mar 2026 jun 2026 oct 2026 $0k $45k $90k $135k $180k\n    - group:\n      - text: Ver datos mensuales de ingresos y egresos\n      - region \"Datos mensuales de ingresos y egresos\":\n        - table \"Ingresos y egresos por mes, en USD\":\n          - caption: Ingresos y egresos por mes, en USD\n          - rowgroup:\n            - row \"Mes Ingresos Egresos\":\n              - columnheader \"Mes\"\n              - columnheader \"Ingresos\"\n              - columnheader \"Egresos\"\n          - rowgroup:\n            - row \"nov 2025 $111,027 $41,404\":\n              - rowheader \"nov 2025\"\n              - cell \"$111,027\"\n              - cell \"$41,404\"\n            - row \"dic 2025 $68,361 $103,379\":\n              - rowheader \"dic 2025\"\n              - cell \"$68,361\"\n              - cell \"$103,379\"\n            - row \"ene 2026 $99,747 $51,691\":\n              - rowheader \"ene 2026\"\n              - cell \"$99,747\"\n              - cell \"$51,691\"\n            - row \"feb 2026 $161,925 $24,863\":\n              - rowheader \"feb 2026\"\n              - cell \"$161,925\"\n              - cell \"$24,863\"\n            - row \"mar 2026 $67,789 $88,077\":\n              - rowheader \"mar 2026\"\n              - cell \"$67,789\"\n              - cell \"$88,077\"\n            - row \"abr 2026 $132,321 $51,666\":\n              - rowheader \"abr 2026\"\n              - cell \"$132,321\"\n              - cell \"$51,666\"\n            - row \"may 2026 $130,423 $40,836\":\n              - rowheader \"may 2026\"\n              - cell \"$130,423\"\n              - cell \"$40,836\"\n            - row \"jun 2026 $105,541 $80,212\":\n              - rowheader \"jun 2026\"\n              - cell \"$105,541\"\n              - cell \"$80,212\"\n            - row \"jul 2026 $122,148 $60,500\":\n              - rowheader \"jul 2026\"\n              - cell \"$122,148\"\n              - cell \"$60,500\"\n            - row \"ago 2026 $84,955 $82,189\":\n              - rowheader \"ago 2026\"\n              - cell \"$84,955\"\n              - cell \"$82,189\"\n            - row \"sept 2026 $67,000 $76,372\":\n              - rowheader \"sept 2026\"\n              - cell \"$67,000\"\n              - cell \"$76,372\"\n            - row \"oct 2026 $106,910 $60,944\":\n              - rowheader \"oct 2026\"\n              - cell \"$106,910\"\n              - cell \"$60,944\"\n    - heading \"Margen de beneficio\" [level=2]\n    - text: Beneficio mensual como porcentaje de los ingresos\n    - application \"Margen de beneficio\": dic 2025 mar 2026 jun 2026 oct 2026 -90% -45% 0% 45% 90%\n    - group:\n      - text: Ver datos mensuales del margen de beneficio\n      - region \"Datos mensuales del margen de beneficio\":\n        - table \"Margen de beneficio por mes\":\n          - caption: Margen de beneficio por mes\n          - rowgroup:\n            - row \"Mes Margen (%)\":\n              - columnheader \"Mes\"\n              - columnheader \"Margen (%)\"\n          - rowgroup:\n            - row \"nov 2025 62.7%\":\n              - rowheader \"nov 2025\"\n              - cell \"62.7%\"\n            - row \"dic 2025 -51.2%\":\n              - rowheader \"dic 2025\"\n              - cell \"-51.2%\"\n            - row \"ene 2026 48.2%\":\n              - rowheader \"ene 2026\"\n              - cell \"48.2%\"\n            - row \"feb 2026 84.6%\":\n              - rowheader \"feb 2026\"\n              - cell \"84.6%\"\n            - row \"mar 2026 -29.9%\":\n              - rowheader \"mar 2026\"\n              - cell \"-29.9%\"\n            - row \"abr 2026 61.0%\":\n              - rowheader \"abr 2026\"\n              - cell \"61.0%\"\n            - row \"may 2026 68.7%\":\n              - rowheader \"may 2026\"\n              - cell \"68.7%\"\n            - row \"jun 2026 24.0%\":\n              - rowheader \"jun 2026\"\n              - cell \"24.0%\"\n            - row \"jul 2026 50.5%\":\n              - rowheader \"jul 2026\"\n              - cell \"50.5%\"\n            - row \"ago 2026 3.3%\":\n              - rowheader \"ago 2026\"\n              - cell \"3.3%\"\n            - row \"sept 2026 -14.0%\":\n              - rowheader \"sept 2026\"\n              - cell \"-14.0%\"\n            - row \"oct 2026 43.0%\":\n              - rowheader \"oct 2026\"\n              - cell \"43.0%\"\n  - region \"Alertas de anomalías\":\n    - heading \"Alertas de anomalías\" [level=2]\n    - text: Períodos con gasto superior a la media de todos los períodos anteriores Umbral\n    - spinbutton \"Umbral de alerta\": \"0.3\"\n    - status: 4 alertas para el umbral y rango seleccionados.\n    - region \"Tabla de alertas de anomalías\":\n      - table \"Alertas de anomalías\":\n        - rowgroup:\n          - row \"Período Egresos registrados Media de períodos anteriores Incremento\":\n            - columnheader \"Período\"\n            - columnheader \"Egresos registrados\"\n            - columnheader \"Media de períodos anteriores\"\n            - columnheader \"Incremento\"\n        - rowgroup:\n          - row \"2025-12 $103,378.98 $41,404.44 149.7%\":\n            - cell \"2025-12\"\n            - cell \"$103,378.98\"\n            - cell \"$41,404.44\"\n            - cell \"149.7%\"\n          - row \"2026-03 $88,076.90 $55,334.29 59.2%\":\n            - cell \"2026-03\"\n            - cell \"$88,076.90\"\n            - cell \"$55,334.29\"\n            - cell \"59.2%\"\n          - row \"2026-06 $80,212.01 $57,416.50 39.7%\":\n            - cell \"2026-06\"\n            - cell \"$80,212.01\"\n            - cell \"$57,416.50\"\n            - cell \"39.7%\"\n          - row \"2026-08 $82,189.37 $60,291.89 36.3%\":\n            - cell \"2026-08\"\n            - cell \"$82,189.37\"\n            - cell \"$60,291.89\"\n            - cell \"36.3%\""
+    },
+    {
+      "view": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "name": "Comparativa B2B vs B2C",
+      "violations": [],
+      "passedRuleIds": [
+        "aria-allowed-attr",
+        "aria-conditional-attr",
+        "aria-deprecated-role",
+        "aria-hidden-body",
+        "aria-hidden-focus",
+        "aria-prohibited-attr",
+        "aria-required-attr",
+        "aria-roles",
+        "aria-valid-attr-value",
+        "aria-valid-attr",
+        "button-name",
+        "color-contrast",
+        "document-title",
+        "form-field-multiple-labels",
+        "html-has-lang",
+        "html-lang-valid",
+        "label",
+        "meta-viewport",
+        "nested-interactive",
+        "target-size"
+      ],
+      "incomplete": [],
+      "incompleteReview": "SVG/legend text manually measured against solid card background; Chromium canvas converts computed OKLCH colors to sRGB; see contrast samples.",
+      "contrast": [
+        {
+          "name": "texto/fondo",
+          "foreground": [
+            232,
+            236,
+            238
+          ],
+          "background": [
+            5,
+            8,
+            11
+          ],
+          "ratio": 16.89,
+          "minimum": 4.5
+        },
+        {
+          "name": "texto secundario/tarjeta",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        },
+        {
+          "name": "borde input/fondo",
+          "foreground": [
+            106,
+            115,
+            122
+          ],
+          "background": [
+            5,
+            8,
+            11
+          ],
+          "ratio": 4.15,
+          "minimum": 3
+        },
+        {
+          "name": "borde input/tarjeta",
+          "foreground": [
+            106,
+            115,
+            122
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 3.9,
+          "minimum": 3
+        },
+        {
+          "name": "foco/tarjeta",
+          "foreground": [
+            232,
+            236,
+            238
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 15.84,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-income",
+          "foreground": [
+            12,
+            132,
+            250
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.11,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-outcome",
+          "foreground": [
+            243,
+            100,
+            81
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 6.05,
+          "minimum": 3
+        },
+        {
+          "name": "--chart-profit",
+          "foreground": [
+            0,
+            172,
+            108
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 6.38,
+          "minimum": 3
+        },
+        {
+          "name": "texto ejes SVG",
+          "foreground": [
+            129,
+            135,
+            140
+          ],
+          "background": [
+            13,
+            18,
+            22
+          ],
+          "ratio": 5.18,
+          "minimum": 4.5
+        }
+      ],
+      "aria": {
+        "missing": [],
+        "imageElements": 0,
+        "imagesWithoutAlt": 0,
+        "svgAlternatives": [
+          {
+            "role": "application",
+            "label": "Ingresos totales por línea",
+            "description": "Comparación del total de ingresos en el período seleccionado"
+          }
+        ]
+      },
+      "accessibilityTree": "- main:\n  - heading \"Panel financiero\" [level=1]\n  - paragraph: Resumen de indicadores financieros\n  - text: Todas las fechas disponibles\n  - navigation \"Vistas del panel\":\n    - button \"Resumen\"\n    - button \"Comparativa B2B vs B2C\"\n  - region \"Filtro de fechas\":\n    - text: Fecha de inicio\n    - textbox \"Fecha de inicio\"\n    - text: Fecha de fin\n    - textbox \"Fecha de fin\"\n    - paragraph: \"Rango disponible: 2025-11-01 — 2026-10-28\"\n  - status: Datos financieros actualizados para el rango seleccionado.\n  - heading \"Comparativa B2B vs B2C\" [level=2]\n  - paragraph: Ingresos y categorías principales por línea de negocio\n  - status: Comparativa B2B y B2C actualizada para el rango seleccionado.\n  - region \"Principales categorías de ingresos por negocio\":\n    - heading \"B2B\" [level=3]\n    - text: \"Total de ingresos: $615,541\"\n    - region \"B2B\":\n      - table \"B2B\":\n        - rowgroup:\n          - row \"Categoría Ingresos % del grupo\":\n            - columnheader \"Categoría\"\n            - columnheader \"Ingresos\"\n            - columnheader \"% del grupo\"\n        - rowgroup:\n          - row \"Ventas $557,904 90.6%\":\n            - cell \"Ventas\"\n            - cell \"$557,904\"\n            - cell \"90.6%\"\n          - row \"Otros $57,637 9.4%\":\n            - cell \"Otros\"\n            - cell \"$57,637\"\n            - cell \"9.4%\"\n    - heading \"B2C\" [level=3]\n    - text: \"Total de ingresos: $642,606\"\n    - region \"B2C\":\n      - table \"B2C\":\n        - rowgroup:\n          - row \"Categoría Ingresos % del grupo\":\n            - columnheader \"Categoría\"\n            - columnheader \"Ingresos\"\n            - columnheader \"% del grupo\"\n        - rowgroup:\n          - row \"Ventas $574,193 89.4%\":\n            - cell \"Ventas\"\n            - cell \"$574,193\"\n            - cell \"89.4%\"\n          - row \"Otros $68,413 10.6%\":\n            - cell \"Otros\"\n            - cell \"$68,413\"\n            - cell \"10.6%\"\n  - heading \"Ingresos totales por línea\" [level=3]\n  - text: Comparación del total de ingresos en el período seleccionado\n  - application \"Ingresos totales por línea\": B2B B2C $0k $200k $400k $600k $800k"
+    }
+  ],
+  "keyboard": [
+    {
+      "view": "desktop",
+      "passed": true,
+      "steps": [
+        "Tab+Enter opens Comparison and updates aria-current",
+        "Both views: full Tab traversal returns to first navigation button, >=2px solid visible outline",
+        "Shift+Tab+Space returns to Overview",
+        "Summary Enter opens, Tab enters data region, Shift+Tab Space closes",
+        "Chart ArrowRight/ArrowLeft retains focus",
+        "Threshold ArrowUp twice gives 0.32 and retains focus"
+      ],
+      "comparisonStops": [
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "BODY",
+          "name": "Panel financieroResumen de indicadores financierosTodas las fechas disponiblesRe",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Resumen",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        }
+      ],
+      "overviewStops": [
+        {
+          "tag": "BUTTON",
+          "name": "Comparativa B2B vs B2C",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "SVG",
+          "name": "Ingresos y egresos",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "Ver datos mensuales de ingresos y egresos",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "SVG",
+          "name": "Margen de beneficio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "Ver datos mensuales del margen de beneficio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Umbral de alerta",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "DIV",
+          "name": "Tabla de alertas de anomalías",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "BODY",
+          "name": "Panel financieroResumen de indicadores financierosTodas las fechas disponiblesRe",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Resumen",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "passed": true,
+      "steps": [
+        "Tab+Enter opens Comparison and updates aria-current",
+        "Both views: full Tab traversal returns to first navigation button, >=2px solid visible outline",
+        "Shift+Tab+Space returns to Overview",
+        "Summary Enter opens, Tab enters data region, Shift+Tab Space closes",
+        "Chart ArrowRight/ArrowLeft retains focus",
+        "Threshold ArrowUp twice gives 0.32 and retains focus"
+      ],
+      "comparisonStops": [
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "BODY",
+          "name": "Panel financieroResumen de indicadores financierosTodas las fechas disponiblesRe",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Resumen",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        }
+      ],
+      "overviewStops": [
+        {
+          "tag": "BUTTON",
+          "name": "Comparativa B2B vs B2C",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de inicio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Fecha de fin",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "SVG",
+          "name": "Ingresos y egresos",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "Ver datos mensuales de ingresos y egresos",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "SVG",
+          "name": "Margen de beneficio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "Ver datos mensuales del margen de beneficio",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "INPUT",
+          "name": "Umbral de alerta",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "DIV",
+          "name": "Tabla de alertas de anomalías",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        },
+        {
+          "tag": "BODY",
+          "name": "Panel financieroResumen de indicadores financierosTodas las fechas disponiblesRe",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "name": "Resumen",
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "javascriptErrors": [],
+  "finalNativeControlCheck": {
+    "timestamp": "2026-11-03T20:42:47.782Z",
+    "colorScheme": "dark",
+    "mobileTableKeyboardScroll": [
+      {
+        "label": "B2B",
+        "scrollLeft": 1,
+        "scrollWidth": 360,
+        "clientWidth": 308
+      },
+      {
+        "label": "B2C",
+        "scrollLeft": 1,
+        "scrollWidth": 360,
+        "clientWidth": 308
+      }
+    ]
+  }
+}

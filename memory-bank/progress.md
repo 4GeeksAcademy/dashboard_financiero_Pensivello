@@ -4,11 +4,31 @@ Bitácora de trabajo realizado y validado el **2026-10-26**. Los estados se
 limitan a comprobaciones ejecutadas; una imagen construida no equivale a un
 despliegue realizado.
 
+## Actualizacion 2026-11-03
+
+- Las cinco skills se trasladaron completas a `.skills/` para cumplir la
+  rubrica; AGENTS, README y referencias internas se actualizaron.
+- Se corrigio el proxy Nginx usando `API_UPSTREAM` en una plantilla de arranque
+  y eliminando la resolucion DNS forzada que ignoraba `/etc/hosts`.
+- El smoke test del frontend de produccion con upstream del host devuelve
+  HTTP 200 y JSON en movimientos, facets, alertas y resumen; conserva filtros.
+  La tabla del 2026-10-26 siguiente es historica, no el estado de ese proxy hoy.
+- Tras autorizacion para continuar, Chromium 156 arranca con bibliotecas
+  temporales fuera del proyecto. axe no detecta infracciones en Resumen y
+  Comparativa a 1440x1000 y 390x844; los nodos SVG incompletos de contraste se
+  revisaron con colores computados y ratios WCAG.
+- Se corrigieron perdida de foco del umbral, contraste de bordes y ejes SVG,
+  foco del calendario nativo y esquema oscuro de controles. Teclado, ARIA y
+  alternativas se verificaron en las vistas cargadas. No es una certificacion
+  WCAG completa ni incluye estados de error/vacio o lector fisico.
+- Build de produccion, lint y 12 pruebas frontend aprobados. Evidencia y
+  capturas en `artifacts/accessibility/`; detalles en `verification.md`.
+
 ## Skills utilizadas y creadas
 
-- **Skill comunitaria `vercel-react-best-practices`** (`.agents/skills/vercel-react-best-practices/`): aplicada a la carga de módulos React y a la reducción de renders redundantes.
-- **Skill comunitaria `seo`** (`.agents/skills/seo/`): aplicada para definir metadatos y rastrear la instancia local en el puerto `5173`.
-- **Skill interna `deployment-readiness`** (`.agents/skills/deployment-readiness/SKILL.md`): creada para cubrir la falta de un procedimiento específico de este repositorio para validar Docker, la conectividad frontend/API y la preparación para despliegue. Sus inputs, pasos, salida y criterios de aceptación están definidos en el archivo de la skill.
+- **Skill comunitaria `vercel-react-best-practices`** (`.skills/vercel-react-best-practices/`): aplicada a la carga de módulos React y a la reducción de renders redundantes.
+- **Skill comunitaria `seo`** (`.skills/seo/`): aplicada para definir metadatos y rastrear la instancia local en el puerto `5173`.
+- **Skill interna `deployment-readiness`** (`.skills/deployment-readiness/SKILL.md`): creada para cubrir la falta de un procedimiento específico de este repositorio para validar Docker, la conectividad frontend/API y la preparación para despliegue. Sus inputs, pasos, salida y criterios de aceptación están definidos en el archivo de la skill.
 
 ## Cambios realizados
 

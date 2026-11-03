@@ -6,7 +6,10 @@ Agents working on this project **must**:
   `./.agents/rules`
 
 - Look for available **agent skills** in the directory:  
-  `./.agents/skills`
+  `./.skills`
+
+  This repository uses the rubric's `.skills/` layout. Load the relevant
+  `SKILL.md` explicitly if the editor does not discover this directory.
 
 - Look for the **project memory bank** in:  
   `./memory-bank`  

@@ -52,7 +52,7 @@ or provided by the user.
 ## Procedure
 
 1. **Read project guidance and source configuration.** Review applicable files
-   in `.agents/rules/`, `.agents/skills/`, and `memory-bank/`. Inspect the
+   in `.agents/rules/`, `.skills/`, and `memory-bank/`. Inspect the
    relevant Dockerfiles, `docker-compose.yml`, frontend proxy/Nginx settings,
    backend health route, environment examples, and documented run commands.
 2. **Map the requested deployment path.** State which image targets and

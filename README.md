@@ -31,7 +31,7 @@ _Financial metrics dashboard with a React + TypeScript frontend and a FastAPI ba
 ./.agents
 └─ /rules
    └─ <rule-name>.md
-└─ /skills
+./.skills
    └─ /<skill-name>
       └─ /SKILL.md
 ```
@@ -55,10 +55,21 @@ The Docker Compose setup above keeps the Vite development server. To build the s
 
 ```bash
 docker build --target production -t dashboard-frontend ./frontend
-docker run --rm -p 8080:80 dashboard-frontend
+docker compose up -d backend
+docker run --rm -p 8080:80 --add-host host.docker.internal:host-gateway \
+   -e API_UPSTREAM=host.docker.internal:8000 dashboard-frontend
 ```
 
-The image serves optimized Vite assets with Nginx, supports SPA fallback, and proxies `/api/` to `backend:8000`. For API requests to work, connect the container to a Docker network where the backend is reachable by that name, or update `frontend/nginx.conf` to use the backend host before building.
+The image serves optimized Vite assets with Nginx and supports SPA fallback. `API_UPSTREAM` configures the `/api/` proxy at startup without rebuilding; use `host:port`, without a scheme or path. The example uses the host-published backend port, like the Compose Vite proxy, for environments that block direct container traffic. On a shared Docker network that allows that traffic, use `--network <network>` and omit the variable to keep `backend:8000`. Preserve the `/api` prefix.
+
+Smoke test from another terminal (expect HTTP 200 and JSON, not SPA HTML):
+
+```bash
+curl --fail --max-time 10 -i http://localhost:8000/health
+curl --fail --max-time 10 -i 'http://localhost:8080/api/metrics?business_type=B2B'
+```
+
+The Compose backend retains `debugpy` and `--reload`: this example verifies the production frontend image against the local API, not a fully production-ready deployment.
 
 ---
 

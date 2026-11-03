@@ -84,12 +84,12 @@ export function IncomeOutcomeChart({ data, loading }: IncomeOutcomeChartProps) {
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeOpacity={0.6} />
               <XAxis
                 dataKey="month"
-                tick={{ fontSize: 12, fill: 'var(--color-muted-foreground)' }}
+                tick={{ fontSize: 12, fill: 'var(--muted-foreground)' }}
                 axisLine={false}
                 tickLine={false}
               />
               <YAxis
-                tick={{ fontSize: 11, fill: 'var(--color-muted-foreground)' }}
+                tick={{ fontSize: 11, fill: 'var(--muted-foreground)' }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}

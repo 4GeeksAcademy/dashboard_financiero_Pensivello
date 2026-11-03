@@ -267,9 +267,9 @@ export function BusinessComparisonPage({
             <ResponsiveContainer width="100%" height={280}>
               <BarChart aria-labelledby={chartTitleId} aria-describedby={chartDescriptionId} data={chartData} margin={{ top: 8, right: 12, left: 8, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeOpacity={0.6} />
-                <XAxis dataKey="businessType" tick={{ fill: "var(--color-muted-foreground)" }} />
+                <XAxis dataKey="businessType" tick={{ fill: "var(--muted-foreground)" }} />
                 <YAxis
-                  tick={{ fill: "var(--color-muted-foreground)" }}
+                  tick={{ fill: "var(--muted-foreground)" }}
                   tickFormatter={(value) => `$${(Number(value) / 1000).toFixed(0)}k`}
                 />
                 <Tooltip

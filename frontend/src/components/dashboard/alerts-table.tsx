@@ -77,7 +77,6 @@ export function AlertsTable({
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
           Umbral
           <ThresholdInput
-            key={threshold}
             threshold={threshold}
             onThresholdChange={onThresholdChange}
           />

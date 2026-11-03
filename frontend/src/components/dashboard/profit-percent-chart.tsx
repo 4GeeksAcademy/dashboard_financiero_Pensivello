@@ -85,12 +85,12 @@ export function ProfitPercentChart({ data, loading }: ProfitPercentChartProps) {
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeOpacity={0.6} />
               <XAxis
                 dataKey="month"
-                tick={{ fontSize: 12, fill: 'var(--color-muted-foreground)' }}
+                tick={{ fontSize: 12, fill: 'var(--muted-foreground)' }}
                 axisLine={false}
                 tickLine={false}
               />
               <YAxis
-                tick={{ fontSize: 11, fill: 'var(--color-muted-foreground)' }}
+                tick={{ fontSize: 11, fill: 'var(--muted-foreground)' }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={(v) => `${v.toFixed(0)}%`}
